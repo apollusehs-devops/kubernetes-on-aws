@@ -3,6 +3,18 @@ pre_apply:
 - name: vpa-admission-controller-new
   namespace: kube-system
   kind: Deployment
+- name: stackset-controller
+  namespace: default
+  kind: VerticalPodAutoscaler
+- name: stackset-controller
+  namespace: default
+  kind: Service
+- name: stackset-controller
+  namespace: default
+  kind: Deployment
+- name: stackset-controller
+  namespace: default
+  kind: ServiceAccount
 
 # everything defined under here will be deleted after applying the manifests
 post_apply:{{ if and (ne .ConfigItems.teapot_admission_controller_process_resources "true") (eq .ConfigItems.enable_ingress_template_controller "true") }} []{{ end }}
